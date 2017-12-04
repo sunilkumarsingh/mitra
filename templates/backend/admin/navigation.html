@@ -1,0 +1,67 @@
+<!-- START LEFT SIDEBAR NAV-->
+<aside id="left-sidebar-nav">
+    <ul id="slide-out" class="side-nav fixed leftside-navigation">
+        <li class="user-details cyan darken-2">
+            <div class="row">
+                <div class="col s4 m3 12"><i class="material-icons medium icon-demo white-text">person</i></div>
+                <div class="col  s8 m9 110">
+                    <ul id="profile-dropdown" class="dropdown-content">
+                        <li>
+                            <a class="waves-effect waves-light  modal-trigger" data-target="resetpassword">
+                                <i class="material-icons">border_color</i> Change password
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/logout/">
+                                <i class="material-icons">lock</i> Logout
+                            </a>
+                        </li>
+                    </ul>
+                    <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn"
+                       data-activates="profile-dropdown">{{user}} <i
+                            class="material-icons right">arrow_drop_down</i></a></div>
+            </div>
+        </li>
+        <li class="bold active" ui-sref-active="active">
+            <a ui-sref="create" class="waves-effect waves-cyan">
+                <i class="material-icons">dashboard</i> Dashboard
+            </a>
+        </li>
+
+        <li class="no-padding" ui-sref-active="active">
+            <a ui-sref="create_profile" class="waves-effect waves-cyan">
+                <i
+                    class="material-icons">add_circle</i> 
+                Create Profiles
+            </a>
+        </li>
+        <li class="no-padding" ui-sref-active="active">
+            <a ui-sref="manage_profile" class="waves-effect waves-cyan">
+                <i class="material-icons">account_circle</i>
+                Manage Profiles
+            </a>
+        </li>
+
+        <li class="no-padding" ui-sref-active="active">
+            <a ui-sref="replace_profile" class="waves-effect waves-cyan">
+                <i class="material-icons">find_replace</i>
+                Replace Profiles
+            </a>
+        </li>
+
+       
+    </ul>
+    <a href="#" data-activates="slide-out"
+       class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i class="material-icons">menu</i></a></aside>
+<!-- END LEFT SIDEBAR NAV-->
+
+<!-- Floating Action Button -->
+<!--<div class="fixed-action-btn" style="bottom: 50px; right: 19px;"><a class="btn-floating btn-large"> <i
+            class="material-icons">stars</i> </a>
+    <ul>
+        <li><a href="#" class="btn-floating red"><i class="material-icons">account_circle</i></a></li>
+        <li><a href="#" class="btn-floating yellow darken-1"><i class="material-icons">perm_identity</i></a></li>
+        <li><a href="#" class="btn-floating blue"><i class="material-icons">storage</i></a></li>
+    </ul>
+</div>-->
+<!-- Floating Action Button -->

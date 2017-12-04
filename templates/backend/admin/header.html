@@ -1,0 +1,100 @@
+<!-- START HEADER -->
+<header id="header" class="page-topbar">
+    <!-- start header nav-->
+    <div class="navbar-fixed">
+        <nav class="navbar-color">
+            <div class="nav-wrapper">
+                <ul class="left">
+                    <li>
+                        <h1 class="logo-wrapper">
+                            <a ui-sref="/">Raxak Create<sup>TM</sup></a>
+                        </h1>
+                    </li>
+                </ul>
+
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/" title="Raxak Protect"><span class="circle blue lighten-1">P</span></a></li>
+                    {% if user.cpeUser.user_type.name in "'Internal Admin', 'Security Admin', 'System Admin'"|slice:',' %}
+                    <li><a href="/manage/" title="Raxak Manage"><span class="circle green lighten-1">M</span></a></li>
+                    {% endif %}
+                    <li class="hover padleft">
+                        <!-- {% now "DATETIME_FORMAT" %} -->
+                        {% verbatim %}
+                            {{currentlocaltime}}
+                        {% endverbatim %}
+                    </li>
+                    <!--<li><a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen">-->
+                        <!--<i class="material-icons">settings_overscan</i></a></li>-->
+                  <!--  <li><a  href="javascript:void(0);" class="waves-effect waves-block waves-light dropdown-button" data-activates="helpProtect"><i class="material-icons">live_help</i></a></li>
+                    {% verbatim %}
+                    <li><a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button"
+                           data-activates="notifications-dropdown"><i class="material-icons">notifications</i>
+                        <small ng-if="count > 0 && count < 101" class="notification-badge">{{count}}</small>
+                        <small ng-if="count > 100" class="notification-badge">100<sup class="plus">+</sup></small>
+                    </a></li>
+                    {% endverbatim %}-->
+                </ul>
+
+                <!-- notifications-dropdown -->
+                <ul id="notifications-dropdown" class="dropdown-content">
+                    <li class="divider"></li>
+                    <li><a href="#"  ng-if="count > 0" class="right-align black-text media-meta" ng-click="markallread()">Mark All as Read</a><a href="#"  ng-if="values.length <= 0" class="right-align black-text media-meta">No Messages to Show!</a></li>
+
+                    {% verbatim %}
+                    <li ng-repeat="value in values" >
+                        <a class="waves-effect waves-light"><i ng-class="checktype(value.event_category)" class="material-icons" data-target="message">{{event_category}} </i>
+                            <span class="task-cat card black-text cursor_no" data-target="message"> {{value.event_entity}} </span>
+                            <span ng-if="value.read_status=='N'" style="font-weight:bold" data-target="message">{{value.description}}</span>
+                            <span ng-if="value.read_status=='Y'" style="font-weight:normal;font-size:80%" data-target="message">{{value.description}}</span>
+                            <i class="material-icons  modal-trigger right-align" data-target="message" ng-click="message_details(value.id)" >  more  </i>
+                            <i class="material-icons" ng-click="DeleteMessage(value.id)"  style="float:right">delete</i></a>
+                            
+                    </li>
+                    <li> <a ui-sref="more_messages"  ng-if="count > 50" class="right-align black-text media-meta">View More</a></li>
+                    {% endverbatim %}
+                </ul>
+
+                <div id="helpProtect" class="dropdown-content">
+
+                            The Raxak Protect portal allows you to enroll resources (e.g. servers) into the platform and apply security profiles to them. The Dashboard displays tiles with current information about your resources. 
+                            <div class="right-align">
+                                <a href="#">
+                                    More help
+                                </a>
+                            </div>
+                        </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="message" class="modal">
+        {% verbatim %}
+        <div class="modal-header">
+            <span>Message Dated: {{msg_date}} </span>
+            <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close">
+                <i class="material-icons">clear</i></a>
+        </div>
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12 m6 left-align">Severity <span class="task-cat" ng-class="checktype(msg_category)" >{{msg_cat}}</span>
+                   </div>
+                <div class="col s12 m6"> Category <span class="task-cat card black-text">{{msg_entity}}</span></div>
+
+                <div class="col s12 m12">
+                    <div class="input-field s12">
+                        <textarea id="textarea1" ng-readonly="true" style="color:black;" class="materialize-textarea">{{msg_details}}</textarea>
+                        {% endverbatim %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+            <a class="waves-effect waves-light btn" ng-click="DeleteMessage(id)">Delete</a>
+                <a class="waves-effect waves-light btn modal-action modal-close">Close</a>
+            
+        </div>
+    </div>
+    <!-- end header nav-->
+</header>
+<!-- END HEADER -->

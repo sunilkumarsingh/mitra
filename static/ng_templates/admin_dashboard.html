@@ -1,0 +1,138 @@
+<script src="static/js/materialize.js"></script>
+<!-- START MAIN -->
+<div id="main">
+    <!-- START WRAPPER -->
+    <div class="wrapper">
+
+        <!-- START CONTENT -->
+        <section id="content">
+
+            <!--breadcrumbs start-->
+            <div id="breadcrumbs-wrapper">
+                <!-- Search for small screen -->
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m12 l12">
+                            <h5 class="breadcrumbs-title">Dashboard</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--breadcrumbs end-->
+
+
+            <!--start container-->
+            <div class="container">
+                <div class="section">
+                    <div class="row">
+                        <!--div class="input-field col s12 m4 l4" >
+                            <select multiple>
+                                <option value="" disabled selected>Choose your Tiles</option>
+                                <option value="1">Resource Status</option>
+                                <option value="2">Top Findings</option>
+                                <option value="3">Resource Group Status</option>
+                                <option value="4">My Organization</option>
+                                <option value="5">Next Run</option>
+                            </select>
+                        </div-->
+                    </div>
+                    <div id="card-stats">
+                        <div class="row">
+                            <div ng-include src="'static/ng_templates/resource_status_card.html'"></div>
+                            <div ng-include src="'/static/ng_templates/profiles_card.html'"></div>
+                            <div ng-include src="'/static/ng_templates/user_hierarchy_card.html'"></div>
+                            <div ng-include src="'/static/ng_templates/profile_run_tiles.html'"></div>
+                            <!--div ng-include src="'/static/ng_templates/next_run_card.html'"></div-->
+                            <div ng-include src="'/static/ng_templates/Rule_Exceptions.html'"></div>
+                            <!-- <div ng-include src="'/static/ng_templates/profile_diff_card.html'"></div> -->
+                            <!--<div ng-include src="'/static/ng_templates/profile_diff_card.html'"></div>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end container-->
+        </section>
+        <!-- END CONTENT -->
+    </div>
+    <!-- END WRAPPER -->
+</div>
+
+
+
+
+<div id="resorcegroups" class="modal">
+    <div class="modal-footer red">
+        <span>&lt; 80% Secure Resource Groups</span>
+        <a href="#" class="waves-effect waves-green btn-flat modal-action modal-close"> 
+            <i class="material-icons">clear</i></a>
+    </div>
+    <div class="modal-content">
+        <div id="table-datatables">
+            <div class="row">
+                <div class="col s12 m12 112">
+                    <div id="table-datatables">
+                        <div class="row">
+                            <div class="col s12 m8 l12">
+                                <table id="data-table-simple1" class="responsive-table display" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Resource Group Name</th>
+                                            <th>Description </th>
+                                            <th>Owner</th>
+                                            <th>Resource Type</th>
+                                            <th>Profile</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Group1</td>
+                                            <td>Profile1 (250)</td>
+                                            <td>anubhav@x.com</td>
+                                            <td>IAAS Compute Windows</td>
+                                            <td>DISA MCC</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div  class="col s12 right-align">
+                    <a class="waves-effect waves-light btn">Run</a>
+                    <a class="waves-effect waves-light btn modal-action modal-close" href="#">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- END MAIN -->
+
+
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+    $("table").tablesorter({
+        theme : "materialize",
+        widthFixed: true,
+        widgets : [ "filter", "column" ]
+    });        
+    });
+
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15 // Creates a dropdown of 15 years to control year
+    });
+     
+  
+        
+</script>

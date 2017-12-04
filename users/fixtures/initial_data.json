@@ -1,0 +1,26 @@
+[
+  {"model": "users.projectstatus", "pk": 1, "fields":
+    {"status": "inprogress", "is_active": true, "created_date": null, "created_by": null, "updated_date": null, "updated_by": null}
+  },
+    {"model": "users.projectstatus", "pk": 2, "fields":
+    {"status": "pending", "is_active": true, "created_date": null, "created_by": null, "updated_date": null, "updated_by": null}
+  },
+    {"model": "users.projectstatus", "pk": 3, "fields":
+    {"status": "onhold", "is_active": true, "created_date": null, "created_by": null, "updated_date": null, "updated_by": null}
+  },
+    {"model": "users.projectstatus", "pk": 4, "fields":
+    {"status": "complete", "is_active": true, "created_date": null, "created_by": null, "updated_date": null, "updated_by": null}
+  },
+    {"model": "users.usertype", "pk": 1, "fields":
+    {"user_type": "consumer", "is_active": true, "created_by": "1", "create_date": null, "updated_by": null, "update_date": null}
+  },
+    {"model": "users.usertype", "pk": 2, "fields":
+    {"user_type": "investor", "is_active": true, "created_by": "1", "create_date": null, "updated_by": null, "update_date": null}
+  },
+    {"model": "users.usertype", "pk": 3, "fields":
+    {"user_type": "epc", "is_active": true, "created_by": "1", "create_date": null, "updated_by": null, "update_date": null}
+  },
+    {"model": "users.usertype", "pk": 4, "fields":
+    {"user_type": "ipp", "is_active": true, "created_by": null, "create_date": null, "updated_by": null, "update_date": null}
+  }
+]

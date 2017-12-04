@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=11" />
+        <meta charset="utf-8">
+        <!--bootstrap cdn-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--bootstrap cdn till here-->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="shortcut icon" type="image/png" href="/static/images/logo.png"/>
+        {% block title %}
+            <title>Power Mitra</title>
+        {% endblock title %}
+        {% block basecss %}
+            <link type="text/css" rel="stylesheet" media="screen,projection" href="{% static 'css/base.css' %}">
+        {% endblock basecss %}
+        
+        {% block css %}
+        {% endblock css %}
+    </head>
+    <body>
+        {% block header %}
+            {% include 'client/header.html' %}
+        {% endblock header %}
+        
+        {% block navigation %}
+            {% include 'client/navigations.html' %}
+        {% endblock navigation %}
+        {% block content %}
+            <div class="container"></div>
+        {% endblock content %}
+        {% block footer %}
+            {% include 'client/footer.html' %}
+        {% endblock footer %}
+    </body>
+    {% block basejs %}
+        <script src="{% static 'js/jquery-3.1.1.js' %}"></script>
+        <script src="{% static 'angular/angular.js' %}"></script>
+        <script src="{% static 'angular/angular-ui-router.js' %}"></script>
+        <script src="{% static 'angular/angular-filter.js' %}"></script>
+        <script src="{% static 'angular/underscore.js'%}"></script>
+        <script src="{% static 'angular/angular-route.js' %}"></script>
+        <script src="{% static 'angular/restangular.js' %}"></script>
+        <script src="{% static 'angular/ng-infinite-scroll.js' %}"></script>
+        <script src="{% static 'js/csrf.js' %}" ></script>
+
+        <script src="{% static 'datejs/moment.js' %}"></script>
+        <script src="{% static 'datejs/moment-timezone.js' %}"></script>
+        <script src="{% static 'datejs/jstz.min.js' %}"></script>    
+
+        <script type="text/javascript">
+            console.log(" Loading base page... ");
+        </script>
+    {% endblock basejs %}
+    {% block js %}
+        
+    {% endblock js %}
+</html>

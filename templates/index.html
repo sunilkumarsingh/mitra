@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+	<title>Power Mitra</title>
+{% endblock title %}
+{% block css %}
+	<!-- <link  href="{% static 'css/create.css' %}" type="text/css" rel="stylesheet" media="screen,projection"> -->
+{% endblock css %}
+{% block header %}
+	<div  id="container" ng-app="power-mitra" ng-init="">
+		{% include 'client/header.html' %}
+	{% endblock header %}
+	{% block navigation %}
+		{% include 'client/navigations.html' %}
+	{% endblock navigation %}
+	{% block content %}
+		<div ui-view=""></div>
+	{% endblock content %}
+	{% block footer %}
+		{% include 'client/footer.html' %}
+	</div>
+{% endblock footer %}
+{% block basejs %}
+	{{ block.super }}
+{% endblock basejs %}
+{% block js %}
+	<script src="{% static 'js/mitra.js' %}"></script>
+	<!-- <script src="{% static 'js/resource_controllers.js' %}"></script> -->
+	<!-- <script src="{% static 'js/profile_controllers.js' %}"></script> -->
+{% endblock js %}

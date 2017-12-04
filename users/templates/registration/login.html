@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+	<div class="crlogo"><img src="{% static 'images/logo.png' %}" alt="" /></div>
+	<div class="sign_with_in">
+		<h5><i class="material-icons">lock</i>Sign In</h5>
+	</div>
+	<div class="login_bx">
+		<div class="row">
+			<div class="col s12 m7">
+				<form class="login-form" method="post">
+					{% csrf_token %}
+					<div class="row">
+						<div class="input-field">
+							{{ form.username }}
+							{{ form.username.label_tag }}
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field">
+							{{ form.password }}
+							{{ form.password.label_tag }}
+						</div>
+					</div>
+					<div class="">
+						{% if form.errors %}
+							<p class="red-text">Please enter a correct username and password.</p>
+						{% endif %}
+					</div>
+					<div class="row">
+						<input type="checkbox" id="remember-me" />
+						<label for="remember-me">Remember me</label>
+					</div>
+					<div class="row">
+						<button class="btn waves-effect waves-light col s12" type="submit" name="action">Submit</button>
+					</div>
+					<div class="row">
+						<div class="row forgot">
+							<a href="/user/password/reset/">Forgot password ?</a>
+						</div>
+					</div>
+					<input type="hidden" name="next" value="{{ next }}" />
+				</form>
+			</div>
+			<div class="right col m5 s12 sign_with">
+				<div class="sign_with_in">
+					<h5><i class="material-icons">lock</i>Sign In With</h5>
+					<a href="/accounts/google/login/?process=login">
+						<img src="{% static 'images/imgpsh_fullsize.png' %}" alt="Google" />
+					</a>
+					<a href="/accounts/amazon/login/?process=login">
+						<img src="{% static 'images/AmazonLoginBtn.png' %}" alt="Amazon" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock content %}
