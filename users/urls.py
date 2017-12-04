@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/$', auth_views.login, {'template_name': 'backend/admin/login.html'}, name='admin'),	
+    url(r'^users/list/$', views.UsersList.as_view()), 
     url(r'^epc/list/', views.EPCList.as_view()),
     url(r'^investor/list/', views.InvestorList.as_view()),
     url(r'^project/list/(?P<id>[0-9]+)/$', views.ProjectList.as_view()),
