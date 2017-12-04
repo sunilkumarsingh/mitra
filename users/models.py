@@ -32,10 +32,10 @@ class UserType(models.Model):
 
 
 class User(AbstractUser):
-    user_type = models.ForeignKey('UserType',on_delete=models.DO_NOTHING, blank=True, null=True)
-    phone_regex = RegexValidator(regex='/^(\+\d{1,3}[- ]?)?\d{10}$/',
-                                 message="Mobile number must be entered in the format: '+999999999'. Up to 10 digits allowed.")
-    mobile = models.CharField(max_length=10, validators=[phone_regex])
+    user_type = models.ForeignKey('UserType',on_delete=models.DO_NOTHING, blank=True, null=True,related_name='usertype')
+    # phone_regex = RegexValidator(regex='/^(\+\d{1,3}[- ]?)?\d{10}$/',
+    #                              message="Mobile number must be entered in the format: '+999999999'. Up to 10 digits allowed.")
+    mobile = models.CharField(max_length=10)
     city = models.CharField(max_length=200, blank=True, null=True)
     state = models.CharField(max_length=200, blank=True, null=True)
     comments = models.CharField(max_length=200, blank=True, null=True)
@@ -49,7 +49,7 @@ class User(AbstractUser):
     plant_size_per_RT_area = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     plant_size_per_consumption = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     feasible_in_house_plant = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
-    customer_profile = models.CharField(max_length=200, blank=True, null=True)
+    consumer_profile = models.CharField(max_length=200, blank=True, null=True)
     income = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     cibil_report = models.CharField(max_length=200, blank=True, null=True)
     review = models.CharField(max_length=200, blank=True, null=True)
@@ -134,7 +134,7 @@ class ProjectStatus(models.Model):
 
 
 class Project_Details(models.Model):
-    customer = models.ForeignKey('User',on_delete=models.DO_NOTHING, related_name='project_customer')
+    consumer = models.ForeignKey('User',on_delete=models.DO_NOTHING, related_name='project_consumer')
     investor = models.ForeignKey('User',on_delete=models.DO_NOTHING, related_name='project_investor')
     epc = models.ForeignKey('User',on_delete=models.DO_NOTHING, related_name='project_epc')
     epc_Details = models.CharField(max_length=200, blank=True, null=True)
@@ -145,16 +145,18 @@ class Project_Details(models.Model):
     next_payment_amount = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     status = models.ForeignKey('ProjectStatus',on_delete=models.DO_NOTHING)
     no_of_units_generated = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
-    Revnue = models.PositiveIntegerField(blank=True, null=True)
+    revenue = models.PositiveIntegerField(blank=True, null=True)
     operation_and_maintainance = models.PositiveIntegerField(blank=True, null=True)
     battery_replacement_cost = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     miscellaneous = models.CharField(max_length=200, blank=True, null=True)
     commission_cost =models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     total_cost = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
+    epc_review = models.CharField(max_length=200, blank=True, null=True)
     created_date = models.DateTimeField(auto_now_add=True)
     created_by = models.CharField(max_length=64, blank=True, null=True)
     updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
     updated_by =  models.CharField(max_length=64, blank=True, null=True)
+
 
     class Meta:
         db_table = "ebc_project_details"
