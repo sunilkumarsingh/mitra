@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^admin/$', auth_views.login, {'template_name': 'backend/admin/login.html'}, name='admin'),	
     url(r'^epc/list/', views.EPCList.as_view()),
+    url(r'^users/list/$', views.UsersList.as_view()),
     url(r'^investor/list/', views.InvestorList.as_view()),
     url(r'^project/list/(?P<id>[0-9]+)/$', views.ProjectList.as_view()),
     url(r'^inactiveuser/(?P<id>[0-9]+)/$', views.UpdateUserStatus.as_view(), name='inactive-user'),
