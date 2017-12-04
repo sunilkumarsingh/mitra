@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/page-center.css' %}">
+{% endblock css %}
+
+{% block title %}Password reset successful{% endblock %}
+
+{% block content %}
+<div class="crlogo"><img src="{% static 'images/crlogo-white.png' %}" alt="" /></div>
+<div class="login_bx3">
+    <div class="row">
+        <div class="col s8 offset-s1">
+            <div class="center"><img src="{% static 'images/maintenance.png' %}" alt="" />
+            </div>
+
+
+        </div>
+        <div class="row clear center">
+            <div></div>
+            <h5>Temporarily Down for Maintenance</h5>
+            <div >We are performing scheduled maintenance. We should be back online shortly</div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}
+
+
+{% block js %}
+<script>
+    {% if not user.is_authenticated %}
+    $("#left-sidebar-nav, #header, .fixed-action-btn").css("display","none");
+    {% endif %}
+</script>
+{% endblock js %}

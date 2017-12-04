@@ -70,39 +70,21 @@ app.config(function( $stateProvider, $urlRouterProvider, RestangularProvider,
 
 	$stateProvider
 		.state('dashboard', {
-			url : "/dashboard/",
+			url : "/dashboard",
 			templateUrl : "/static/ng_templates/dashboard.html",
 			// controller : "Dashboard"
 		})
 
-		.state('manage_profile', {
-			url : "/manage/profile/",
+		.state('profile', {
+			url : "/user/profile/",
 			templateUrl : "/static/ng_templates/manage_profile.html",
 			controller : "ManageProfile"
 		})
 
-		.state('create_profile', {
-			url : "/profile/",
-			templateUrl : "/static/ng_templates/create_profile.html",
-			controller : "CreateProfile"
+		.state('contactus', {
+			url : "/contactus",
+			templateUrl : "/static/ng_templates/contactus.html",
+			// controller : "ContactUs"
 		})
-
-        .state('replace_profile', {
-			url : "/replaceuser/profile/",
-			templateUrl : "/static/ng_templates/replace_profile.html",
-			controller : "ReplaceUserProfile",
-		})
-
-	    .state('newprofile', {
-			url : "/newprofile/",
-			templateUrl : "/static/ng_templates/newprofile.html",
-			controller : "NewProfile"
-		})
-
-    //     .state("more_messages", {
-    //     url : "/more_messages",
-    //     templateUrl : "/static/ng_templates/user_message.html",
-    //     controller : 'moremessages'
-    // })
-
+		
 });

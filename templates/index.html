@@ -18,13 +18,12 @@
 	{% endblock content %}
 	{% block footer %}
 		{% include 'client/footer.html' %}
-	</div>
-{% endblock footer %}
+	{% endblock footer %}
+</div>
 {% block basejs %}
 	{{ block.super }}
 {% endblock basejs %}
 {% block js %}
-	<script src="{% static 'js/mitra.js' %}"></script>
-	<!-- <script src="{% static 'js/resource_controllers.js' %}"></script> -->
-	<!-- <script src="{% static 'js/profile_controllers.js' %}"></script> -->
+	<!-- 	<script src="{% static 'js/mitra.js' %}"></script>
+	<script src="{% static 'js/consumer.js' %}"></script> -->
 {% endblock js %}

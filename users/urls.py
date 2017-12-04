@@ -10,7 +10,11 @@ router.register(r'users', views.UsersViewSet)
 
 
 urlpatterns = [
-	# url(r'^', include(router.urls)),
+    # url(r'^admin/', admin.site.urls),
+    # url(r'', include('django.contrib.auth.urls')),
+    url(r'^login/$', auth_views.login, name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^admin/$', auth_views.login, {'template_name': 'backend/admin/login.html'}, name='admin'),	
     url(r'^users/list/$', views.LoggedUserList.as_view()),
     url(r'^users/login/', views.UserLogin.as_view()),
 ]
