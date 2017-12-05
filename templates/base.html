@@ -23,17 +23,14 @@
     </head>
     <body>
         {% block header %}
-            <!-- {% include 'client/header.html' %} -->
         {% endblock header %}
         
         {% block navigation %}
-            <!-- {% include 'client/navigations.html' %} -->
         {% endblock navigation %}
         {% block content %}
             <div class="container"></div>
         {% endblock content %}
         {% block footer %}
-            <!-- {% include 'client/footer.html' %} -->
         {% endblock footer %}
     </body>
     {% block basejs %}
@@ -46,13 +43,11 @@
         <script src="{% static 'angular/restangular.js' %}"></script>
         <script src="{% static 'angular/ng-infinite-scroll.js' %}"></script>
         <script src="{% static 'js/csrf.js' %}" ></script>
-
         <script src="{% static 'datejs/moment.js' %}"></script>
         <script src="{% static 'datejs/moment-timezone.js' %}"></script>
-        <script src="{% static 'datejs/jstz.min.js' %}"></script>    
-
+        <script src="{% static 'datejs/jstz.min.js' %}"></script>
         <script type="text/javascript">
-            console.log(" Loading base page... ");
+        console.log(" Loading base page... ");
         </script>
     {% endblock basejs %}
     {% block js %}

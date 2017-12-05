@@ -66,21 +66,30 @@ app.config(function( $stateProvider, $urlRouterProvider, RestangularProvider,
 		}
 	})
 
-	$urlRouterProvider.otherwise('/dashboard/');
+	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
-		.state('dashboard', {
-			url : "/dashboard",
-			templateUrl : "/static/ng_templates/dashboard.html",
+		.state('/', {
+			url : "/",
+			templateUrl : "/static/ng_templates/home.html",
 			// controller : "Dashboard"
 		})
 
-		.state('profile', {
-			url : "/user/profile/",
-			templateUrl : "/static/ng_templates/manage_profile.html",
-			controller : "ManageProfile"
+		.state('dashboard', {
+			url : "/dashboard",
+			templateUrl : "/static/ng_templates/dashboard.html",
+			// controller : "ManageProfile"
 		})
-
+		.state('aboutus', {
+			url : "/aboutus",
+			templateUrl : "/static/ng_templates/aboutus.html",
+			// controller : "ManageProfile"
+		})
+		.state('services', {
+			url : "/services",
+			templateUrl : "/static/ng_templates/services.html",
+			// controller : "ManageProfile"
+		})		
 		.state('contactus', {
 			url : "/contactus",
 			templateUrl : "/static/ng_templates/contactus.html",

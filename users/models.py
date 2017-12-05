@@ -17,7 +17,7 @@ def image_upload_path(instance, filename):
     return os.path.basename(filename)
 
 class UserType(models.Model):
-    user_type = models.CharField(unique=True, max_length=64, blank=True, null=True)
+    name = models.CharField(unique=True, max_length=64, blank=True, null=True)
     is_active = models.BooleanField(default=1)
     created_by = models.CharField(max_length=64, blank=True, null=True)
     create_date = models.DateTimeField(blank=True, null=True)
@@ -120,7 +120,7 @@ class Solar_Estimator(models.Model):
 class ProjectStatus(models.Model):
     status = models.CharField(max_length=200, null=True)
     is_active = models.BooleanField(default=1)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(null=True, auto_now_add=True)
     created_by =  models.CharField(max_length=64, blank=True, null=True)
     updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
     updated_by =  models.CharField(max_length=64, blank=True, null=True)

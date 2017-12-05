@@ -6,7 +6,7 @@ PASSWORD_MAX_LENGTH = 128
 User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
-    user_type = serializers.StringRelatedField(source = 'user_type.user_type',read_only = True)
+    user_type = serializers.StringRelatedField(source = 'user_type.name',read_only = True)
 
     class Meta:
         model = User
@@ -40,7 +40,7 @@ class UserTypeSerializer(serializers.ModelSerializer):
 
 
 class EPC_DetailsSerializer(serializers.ModelSerializer):
-    user_type = serializers.StringRelatedField(source = 'user.user_type.user_type',read_only = True)
+    user_type = serializers.StringRelatedField(source = 'user.user_type.name',read_only = True)
     email = serializers.StringRelatedField(source = 'user.email',read_only = True)
     username = serializers.StringRelatedField(source = 'user.username',read_only = True)
     mobile = serializers.StringRelatedField(source = 'user.mobile',read_only = True)

@@ -4,20 +4,20 @@ from rest_framework import routers
 from powermitra.settings import dev
 
 from users import views
+from django.contrib import admin
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UsersViewSet)
 
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     # url(r'', include('django.contrib.auth.urls')),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^admin/$', auth_views.login, {'template_name': 'backend/admin/login.html'}, name='admin'),	
+    # url(r'^admin/$', auth_views.login, {'template_name': 'backend/admin/login.html', 'extra_context': {'next':'/dashboard/'}}, name='admin'),
     url(r'^users/list/$', views.UsersList.as_view()), 
     url(r'^epc/list/', views.EPCList.as_view()),
-    url(r'^users/list/$', views.UsersList.as_view()),
     url(r'^investor/list/', views.InvestorList.as_view()),
     url(r'^project/list/(?P<id>[0-9]+)/$', views.ProjectList.as_view()),
     url(r'^inactiveuser/(?P<id>[0-9]+)/$', views.UpdateUserStatus.as_view(), name='inactive-user'),
