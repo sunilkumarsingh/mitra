@@ -1,4 +1,6 @@
 @charset "utf-8";
 /* CSS Document */
 
-@import "style.css";/* for basic structure */
+@import "bootstrap.min.css";
+@import "owl.carousel.css";
+@import "styles.css";

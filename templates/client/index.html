@@ -4,17 +4,16 @@
 	<title>Power Mitra</title>
 {% endblock title %}
 {% block css %}
-	<!-- <link  href="{% static 'css/create.css' %}" type="text/css" rel="stylesheet" media="screen,projection"> -->
 {% endblock css %}
 {% block header %}
 	<div id="container" ng-app="power-mitra" ng-init="auth.user={{ user.id }}; auth.username ='{{ user.username }}'; auth.user_type='{{user.user_type.name}}'">
-
 		{% include './header.html' %}
 	{% endblock header %}
 	{% block navigation %}
 	{% endblock navigation %}
 	{% block content %}
 		<div ui-view=""></div>
+		<!-- {% include './home.html' %} -->
 	{% endblock content %}
 	{% block footer %}
 		{% include './footer.html' %}
