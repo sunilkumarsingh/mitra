@@ -1,5 +1,12 @@
 <nav>
-	<a ui-sref="dashboard" ui-sref-active="active">Dashboard</a>
-	<a ui-sref="profile" ui-sref-active="active">Profile</a>
+	<a ui-sref="/" ui-sref-active="active">Home</a>
+	<a ui-sref="aboutus" ui-sref-active="active">About Us</a>
+	<a ui-sref="services" ui-sref-active="active">Services</a>
 	<a ui-sref="contactus" ui-sref-active="active">Contat Us</a>
+	{% if user.id %}
+		<a ui-sref="contactus" ui-sref-active="active">Accounts</a>
+		<a href="/logout/">Log Out</a>
+	{% else %}
+		<a href="login/?next=#!/dashboard">Log In</a>
+	{% endif %}
 </nav>

@@ -22,7 +22,7 @@ from django.contrib.auth import get_user_model
 from rest_framework import permissions
 
 class PowerMitraIndex(TemplateView):
-    template_name = "index.html"
+    template_name = "client/index.html"
 
 class UsersViewSet(viewsets.ModelViewSet):
     """
@@ -69,7 +69,7 @@ class EPCList(generics.ListCreateAPIView):
     """List of EPC users """
 
     model = EPC_Details
-    queryset= EPC_Details.objects.filter(user_id__user_type__user_type="epc", user_id__is_active=1)
+    queryset= EPC_Details.objects.filter(user_id__user_type__name="epc", user_id__is_active=1)
     serializer_class = EPC_DetailsSerializer
 
 
@@ -80,7 +80,7 @@ class InvestorList(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
     def get(self, request, *args, **kwargs):
-        investor_data = User.objects.filter(user_type__user_type="investor", is_active=1).values()
+        investor_data = User.objects.filter(user_type__name="investor", is_active=1).values()
         return HttpResponse(investor_data, content_type="text/plain")
 
 
@@ -103,7 +103,7 @@ class ProjectList(generics.ListCreateAPIView):
 
     def get(self, request, *args, **kwargs):
         user_id = self.kwargs['id']
-        project_data = Project_Details.objects.filter(consumer=user_id).values()
+        project_data = Project_Details.objects.filter(customer=user_id).values()
         return HttpResponse(project_data, content_type="text/plain")
 
 
@@ -186,13 +186,13 @@ class ConsumerWithEPCReview(generics.CreateAPIView):
     serializer_class = ProjectSerializer
 
     def post(self, request, *args, **kwargs):
-        loggedinuser = request.data['consumer']
+        loggedinuser = request.data['customer']
         selected_epc = request.data["epc"]
         epcreview = request.data["epc_review"]
         try:
             updated, created = Project_Details.objects.update_or_create(
                 epc=selected_epc,
-                consumer=loggedinuser,
+                customer=loggedinuser,
                 defaults={
                     "epc_review": epcreview
                 }

@@ -7,23 +7,23 @@
 	<!-- <link  href="{% static 'css/create.css' %}" type="text/css" rel="stylesheet" media="screen,projection"> -->
 {% endblock css %}
 {% block header %}
-	<div  id="container" ng-app="power-mitra" ng-init="">
-		{% include 'client/header.html' %}
+	<div id="container" ng-app="power-mitra" ng-init="auth.user={{ user.id }}; auth.username ='{{ user.username }}'; auth.user_type='{{user.user_type.name}}'">
+
+		{% include './header.html' %}
 	{% endblock header %}
 	{% block navigation %}
-		{% include 'client/navigations.html' %}
 	{% endblock navigation %}
 	{% block content %}
 		<div ui-view=""></div>
 	{% endblock content %}
 	{% block footer %}
-		{% include 'client/footer.html' %}
+		{% include './footer.html' %}
 	{% endblock footer %}
 </div>
 {% block basejs %}
 	{{ block.super }}
 {% endblock basejs %}
 {% block js %}
-	<!-- 	<script src="{% static 'js/mitra.js' %}"></script>
-	<script src="{% static 'js/consumer.js' %}"></script> -->
+	<script src="{% static 'js/mitra_app.js' %}"></script>
+	<script src="{% static 'js/consumer.js' %}"></script>
 {% endblock js %}

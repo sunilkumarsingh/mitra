@@ -4,14 +4,16 @@ from rest_framework import routers
 from powermitra.settings import dev
 
 from users import views
+<<<<<<< HEAD
 # from django.contrib import admin
+from django.contrib import admin
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UsersViewSet)
 
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     # url(r'', include('django.contrib.auth.urls')),
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
@@ -23,10 +25,6 @@ urlpatterns = [
     url(r'^user/password/reset/done/$', auth_views.password_reset_done, {'template_name': 'registration/password_reset_done.html'}, name='password_reset_done'),
     url(r'^user/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, {'template_name': 'registration/password_reset_confirm.html'}, name='password_reset_confirm'),
     url(r'^user/password/done/$', auth_views.password_reset_complete, {'template_name': 'registration/password_reset_complete.html'}, name='password_reset_complete'),
-
-
-
-
 
     # url(r'^admin/$', auth_views.login, {'template_name': 'backend/admin/login.html'}, name='admin'),
     url(r'^users/list/$', views.UsersList.as_view()), 
