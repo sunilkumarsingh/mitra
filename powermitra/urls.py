@@ -21,6 +21,7 @@ from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    url(r'^admin/', admin.site.urls),
     url(r'^$', views.PowerMitraIndex.as_view(), name='index'),
     url(r'',include('users.urls'))
 ]

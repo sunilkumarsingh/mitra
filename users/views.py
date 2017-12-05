@@ -84,6 +84,17 @@ class InvestorList(generics.ListCreateAPIView):
         return HttpResponse(investor_data, content_type="text/plain")
 
 
+class UserTypeList(generics.ListCreateAPIView):
+    """ List of user types"""
+
+    model = UserType
+    serializer_class = UserTypeSerializer
+
+    def get(self, request, *args, **kwargs):
+        usertype_list = UserType.objects.all().values()
+        return HttpResponse(usertype_list, content_type="text/plain")
+
+
 class ProjectList(generics.ListCreateAPIView):
     """ List of Projects of particular consumer"""
 
@@ -189,4 +200,5 @@ class ConsumerWithEPCReview(generics.CreateAPIView):
             return JsonResponse({"message": 'Updated Review'})
         except Exception as e:
             return HttpResponse(e, status=500)
+
 
