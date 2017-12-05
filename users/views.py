@@ -103,7 +103,7 @@ class ProjectList(generics.ListCreateAPIView):
 
     def get(self, request, *args, **kwargs):
         user_id = self.kwargs['id']
-        project_data = Project_Details.objects.filter(customer=user_id).values()
+        project_data = Project_Details.objects.filter(consumer=user_id).values()
         return HttpResponse(project_data, content_type="text/plain")
 
 
@@ -186,13 +186,13 @@ class ConsumerWithEPCReview(generics.CreateAPIView):
     serializer_class = ProjectSerializer
 
     def post(self, request, *args, **kwargs):
-        loggedinuser = request.data['customer']
+        loggedinuser = request.data['consumer']
         selected_epc = request.data["epc"]
         epcreview = request.data["epc_review"]
         try:
             updated, created = Project_Details.objects.update_or_create(
                 epc=selected_epc,
-                customer=loggedinuser,
+                consumer=loggedinuser,
                 defaults={
                     "epc_review": epcreview
                 }
