@@ -4,8 +4,6 @@ from rest_framework import routers
 from powermitra.settings import dev
 
 from users import views
-<<<<<<< HEAD
-# from django.contrib import admin
 from django.contrib import admin
 
 router = routers.DefaultRouter()
