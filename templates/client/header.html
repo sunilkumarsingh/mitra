@@ -3,28 +3,48 @@
 <div class="navbar navbar-default navbar-transparent navbar-fixed-top" role="navigation" data-start="padding: 10px 0px; background: rgba(255, 255, 255, .0); border-color: rgba(255, 255, 255, .0);" data-20p="padding: 0px 0px; background: rgba(64, 197, 240, .95); border-color: rgba(231, 231, 231, 1);">
 	<div class="container">
 		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-			<!-- Light and dark logo -->
-			<a href="#intro" class="navbar-brand"> <img class="img-responsive" src="{% static 'images/logo.jpg' %}" alt="" data-start="opacity: 1;" data-20p="opacity: 0;"> <img class="img-responsive" src="{% static 'images/logo.jpg' %}" alt="" data-start="opacity: 0;" data-20p="opacity: 1;"> </a>
+			<a href="#intro" class="navbar-brand"><img class="img-responsive" src="{% static 'images/logo.png' %}" alt="" data-start="opacity: 1;" data-20p="opacity: 0;"><img class="img-responsive" src="{% static 'images/logo.png' %}" alt="" data-start="opacity: 0;" data-20p="opacity: 1;">
+			</a>
 		</div>
 		<!-- Navigation links -->
-		<div class="collapse navbar-collapse" id="navbar-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				<li><a ui-sref="/" ui-sref-active="active" data-start="color: rgb(255, 255, 255);" data-20p="color: rgb(0, 0, 0);">Home</a></li>
-				<li><a ui-sref="services" ui-sref-active="active" data-start="color: rgb(255, 255, 255);" data-20p="color: rgb(0, 0, 0);">Services</a></li>
-				<li><a href="#" data-start="color: rgb(255, 255, 255);" data-20p="color: rgb(0, 0, 0);">Features</a></li>
-				<li><a ui-sref="aboutus" ui-sref-active="active" data-start="color: rgb(255, 255, 255);" data-20p="color: rgb(0, 0, 0);">About Us</a></li>
-				<li><a ui-sref="contactus" ui-sref-active="active" data-start="color: rgb(255, 255, 255);" data-20p="color: rgb(0, 0, 0);">Contact</a></li>
-				{% if user.id %}
-					<li>
-						<a ui-sref="contactus" ui-sref-active="active" data-start="color: rgb(255, 255, 255);" data-20p="color: rgb(0, 0, 0);">Hi, {{ user.username }}</a>
-					</li>
-					<li><a href="/logout/" data-start="color: rgb(255, 255, 255);" data-20p="color: rgb(0, 0, 0);">Log Out</a></li>
-				{% else %}
-					<li><a href="login/?next=#!/dashboard" data-start="color: rgb(255, 255, 255);" data-20p="color: rgb(0, 0, 0);">Log In</a></li>
-				{% endif %}
-			</ul>
-		</div>
-	</div>
+		<div id='cssmenu'>
+			<ul>
+				<li><a ui-sref='/' ui-sref-active="active">Home</a></li>
+				<li><a ui-sref="aboutus" ui-sref-active="active">About Us</a></li>
+				<li><a ui-sref="contactus" ui-sref-active="active">Contat Us</a></li>
+				<li class='active'><a href='#'>Products</a>
+				<ul>
+					<li><a href='#'>Product 1</a>
+					<ul>
+						<li><a href='#'>Sub Product</a></li>
+						<li><a href='#'>Sub Product</a></li>
+					</ul>
+				</li>
+				<li><a href='#'>Product 2</a>
+				<ul>
+					<li><a href='#'>Sub Product</a></li>
+					<li><a href='#'>Sub Product</a></li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	{% if user.id %}
+		<li class='active'><a href='#'>Hi, {{ user.username}}</a>
+		<ul>
+			<!-- <li><a ui-sref="useraccount" ui-sref-active="active">Account</a></li> -->
+			<!-- <li><a ui-sref="userproject" ui-sref-active="active">Project</a></li> -->
+			<li><a href="#">Account</a></li>
+			<li><a href="#">Project</a></li>
+			<li><a href='#'>Manage EPC</a></li>
+			<li><a href="/logout/">Log Out</a></li>
+		</li>
+	</ul>
+</li>
+{% else %}
+<li><a href="login/">Log In</a></li>
+{% endif %}
+</ul>
+</div>
+</div>
 </div>
 <!-- End navigation -->

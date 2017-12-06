@@ -81,7 +81,7 @@ app.config(function( $stateProvider, $urlRouterProvider, RestangularProvider,
 		.state('manage_consumers', {
 			url : "/manage/consumers",
 			templateUrl : "/static/ng_templates/consumers.html",
-			// controller : "ManageConsumers"
+			controller : "Consumers"
 		})
 		.state('manage_projects', {
 			url : "/manage/projects",

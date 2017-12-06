@@ -91,40 +91,40 @@ $(document).ready(function() {
 	});
 
 /* ==== 5) Contact form ==== */
+//
+//	$('.flowuplabels').FlowupLabels({
+//		feature_onInitLoad: false, 
+//		class_focused: 'focused',
+//		class_populated: 'populated' 
+//	});
 
-	$('.flowuplabels').FlowupLabels({
-		feature_onInitLoad: false, 
-		class_focused: 'focused',
-		class_populated: 'populated' 
-	});
+	//var options = {
+//		target: '.message .alert',
+//		beforeSubmit: showRequest,
+//		success: showResponse
+//	};
 
-	var options = {
-		target: '.message .alert',
-		beforeSubmit: showRequest,
-		success: showResponse
-	};
-
-	$('#contactForm').ajaxForm(options);
-	function showRequest(formData, jqForm, options) {
-		var queryString = $.param(formData);
-			return true;
-		}
-	function showResponse(responseText, statusText) {
-		}
+	//$('#contactForm').ajaxForm(options);
+//	function showRequest(formData, jqForm, options) {
+//		var queryString = $.param(formData);
+//			return true;
+//		}
+//	function showResponse(responseText, statusText) {
+//		}
 
 /* ==== 6) SVG icons ==== */
 
-	var url ='css/streamline-icons.svg';
-	var c=new XMLHttpRequest(); c.open('GET', url, false); c.setRequestHeader('Content-Type', 'text/xml'); c.send();
-	document.body.insertBefore(c.responseXML.firstChild, document.body.firstChild)
-
-	var url ='css/simpleline-icons.svg';
-	var c=new XMLHttpRequest(); c.open('GET', url, false); c.setRequestHeader('Content-Type', 'text/xml'); c.send();
-	document.body.insertBefore(c.responseXML.firstChild, document.body.firstChild)
-
-	var url ='css/social-icons.svg';
-	var c=new XMLHttpRequest(); c.open('GET', url, false); c.setRequestHeader('Content-Type', 'text/xml'); c.send();
-	document.body.insertBefore(c.responseXML.firstChild, document.body.firstChild)
+	//var url ='css/streamline-icons.svg';
+//	var c=new XMLHttpRequest(); c.open('GET', url, false); c.setRequestHeader('Content-Type', 'text/xml'); c.send();
+//	document.body.insertBefore(c.responseXML.firstChild, document.body.firstChild)
+//
+//	var url ='css/simpleline-icons.svg';
+//	var c=new XMLHttpRequest(); c.open('GET', url, false); c.setRequestHeader('Content-Type', 'text/xml'); c.send();
+//	document.body.insertBefore(c.responseXML.firstChild, document.body.firstChild)
+//
+//	var url ='css/social-icons.svg';
+//	var c=new XMLHttpRequest(); c.open('GET', url, false); c.setRequestHeader('Content-Type', 'text/xml'); c.send();
+//	document.body.insertBefore(c.responseXML.firstChild, document.body.firstChild)
 
 /* Add your set / See documentation */
 
@@ -134,49 +134,49 @@ $(document).ready(function() {
 	document.body.insertBefore(c.responseXML.firstChild, document.body.firstChild)
 */
 
-/* ==== 7) Google map ==== */
+///* ==== 7) Google map ==== */
+//
+//	google.maps.event.addDomListener(window, 'load', init);
+//
+//	function init() {
+//		var mapOptions = {
+//			disableDefaultUI: true,
+//			scrollwheel: false,
+//			draggable: true,
+///* Map position latitude and longitude */
+//			center: new google.maps.LatLng(45.255, 19.845),
+///* Map zoom / 0 is "Earth" and 21 is fully zoomed */
+//			zoom: 15,
+///* Custom map color / See documentation */
+//			styles: []
+//		};
+//		var mapElement = document.getElementById('gmap');
+//		var map = new google.maps.Map(mapElement, mapOptions);
+//		var image = 'img/map-pin.png';
+///* Marker #1 */
+//		var marker = new google.maps.Marker({
+//			position: new google.maps.LatLng(45.253, 19.845),
+//			map: map,
+//			icon: image
+//		});
+///* Marker #2 */
+//		var marker = new google.maps.Marker({
+//			position: new google.maps.LatLng(45.255, 19.850),
+//			map: map,
+//			icon: image
+//		});
+///* Marker #3 */
+//		var marker = new google.maps.Marker({
+//			position: new google.maps.LatLng(45.257, 19.840),
+//			map: map,
+//			icon: image
+//		});
+//	}
+//
+//});
 
-	google.maps.event.addDomListener(window, 'load', init);
-
-	function init() {
-		var mapOptions = {
-			disableDefaultUI: true,
-			scrollwheel: false,
-			draggable: true,
-/* Map position latitude and longitude */
-			center: new google.maps.LatLng(45.255, 19.845),
-/* Map zoom / 0 is "Earth" and 21 is fully zoomed */
-			zoom: 15,
-/* Custom map color / See documentation */
-			styles: []
-		};
-		var mapElement = document.getElementById('gmap');
-		var map = new google.maps.Map(mapElement, mapOptions);
-		var image = 'img/map-pin.png';
-/* Marker #1 */
-		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(45.253, 19.845),
-			map: map,
-			icon: image
-		});
-/* Marker #2 */
-		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(45.255, 19.850),
-			map: map,
-			icon: image
-		});
-/* Marker #3 */
-		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(45.257, 19.840),
-			map: map,
-			icon: image
-		});
-	}
-
-});
-
-$(window).load(function() {
-	'use strict';
+//$(window).load(function() {
+//	'use strict';
 
 /* ==== 8) Collapse menu on tap/select on mobile and tablet devices ==== */
 

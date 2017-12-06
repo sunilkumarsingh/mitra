@@ -1,37 +1,4 @@
-/*
 
-Template Name: Myway
-Template Demo: http://awerest.com/demo/myway
-
-Purchase: http://themeforest.net/item/myway-onepage-bootstrap-parallax-retina-template/4058880?ref=awerest
-
-Author: Awerest
-
-Description: Onepage Bootstrap Multi-Purpose Parallax Retina Template
-Tags: Responsive, Mobile First, Retina, Bootstrap 3, One Page, Multi Page, Multi-Purpose, Agency, Clean, Creative, Minimal, Components, Photography, Portfolio, Business, Corporate, White, Modern
-
-Version: 2.5
-
----------------
-
-Table of Contents:
-
-1) General
-2) Typography
-3) Backgrounds and buttons
-4) Dividers
-5) Intro & Sections Headers
-6) Services & Features
-7) Works
-8) Gallery
-9) Team
-10) Contact
-11) Footer
-12) Navigation
-13) Carousels
-14) Preloader
-
-*/
 
 /* ==== 1) General ==== */
 /* montserrat-regular - latin */
@@ -46,6 +13,19 @@ Table of Contents:
        url('../fonts/montserrat-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
        url('../fonts/montserrat-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
        url('../fonts/montserrat-v12-latin-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* caveat-regular - latin */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/caveat-v4-latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Caveat Regular'), local('Caveat-Regular'),
+       url('../fonts/caveat-v4-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/caveat-v4-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/caveat-v4-latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/caveat-v4-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/caveat-v4-latin-regular.svg#Caveat') format('svg'); /* Legacy iOS */
 }
 
 @-webkit-viewport   { width: device-width; }
@@ -85,6 +65,7 @@ body {
 
 section {
 	position: relative;
+	    min-height: 500px !important;
 }
 
 .img-responsive {
@@ -96,6 +77,7 @@ section {
 .light {
 	color: #f7c109;
 	text-shadow: 2px 2px #000000;
+	font-family:'Caveat'; font-size:72px !important;
 }
 
 .smoke, h5 small {
@@ -848,7 +830,7 @@ footer h4 {
 /* ==== 12) Navigation ==== */
 
 .navbar-default {
-	background-color: #fff;
+	background-color: transparent;
 }
 
 .navbar-default .navbar-collapse {
@@ -864,7 +846,7 @@ footer h4 {
 }
 
 .nav li:first-child {
-	display: none;
+	display: block;
 }
 
 .nav a {
@@ -880,9 +862,10 @@ footer h4 {
 }
 
 .navbar li a {
-	font-size: 13px;
-	text-align: center;
-	padding: 20px 15px !important;
+	font-size: 15px;
+    text-align: center;
+    padding: 10px 15px !important;
+    letter-spacing: 1px;
 }
 
 @media (max-width: 767px) {
@@ -915,7 +898,7 @@ footer h4 {
 		opacity: 1 !important;
 	}
 	.navbar-default {
-		background-color: rgba(255, 255, 255, 0.95) !important;
+		background-color: #4ac8f1 !important;
 	}
 	.nav a {
 		color: #111 !important;
@@ -1064,7 +1047,7 @@ footer h4 {
 	}
 }
 
-.navbar .container {background: rgba(67, 158, 187, .5); }
+.navbar .container {background: rgba(67, 158, 187, .0); }
 
 
 
@@ -1384,3 +1367,423 @@ button.close {position: relative;
 .page-icon .fa {font-size: 43px;
     color: #f0f0f0;
     padding-top: 15px;}
+	
+	.carousel-inner .smoke  {font-size:50px; font-family:'Caveat';}
+	.carousel-inner .light {font-size:40px;}
+	
+	
+	footer {bottom: 0px !important;
+    position: absolute;
+    width: 100%;
+   }
+	
+	
+	
+	#rbgnavbar a:hover, a, li, .dropdown-menu li:hover {
+    color: #000000;
+}
+
+.dropdown-menu li:hover {
+    background-color: #F2EDE4;
+    color: #000000;
+}
+
+/* Main dropdown menu items change cover when selected/clicked */
+.dropdown-toggle:active, .open .dropdown-toggle, .dropdown:hover {
+    background-color: #196143 !important;
+}
+
+.dropdown-menu li, .dropdown-menu a {
+    text-align: center;
+    color: #000000;
+}
+
+.dropdown {
+    font-size: 10px;
+    padding: 0;
+    font-weight: bold;
+}
+
+#rbgnavbar {
+    max-width: 1400px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#00502F;
+}
+
+
+.rbgwhitelink {
+    color: #FFFFFF;
+}
+
+.dropdown ul {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* Border thickness and color between dropdown menu li, padding */
+.dropdown-menu li {
+    border-top: 2px double #D3D3D3;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* Background color of li in navbar when hovered over */
+.dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a, .dropdown-menu li:hover {
+    background-color: #F2EDE4;
+}
+
+/* Makes dropdown-menu li links bold*/
+.dropdown-menu li > a, .dropdown-menu li > a:visited {
+    font-weight: bold;
+}
+
+
+#cssmenu,
+#cssmenu ul,
+#cssmenu ul li,
+#cssmenu ul li a,
+#cssmenu #menu-button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 2.5;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;text-align: left;
+}
+#cssmenu:after,
+#cssmenu > ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+#cssmenu #menu-button {
+  display: none;
+}
+#cssmenu {
+  font-family: Montserrat, sans-serif;
+  /*background: #333333;*/float: right;margin-top: 10px;
+}
+#cssmenu > ul > li {
+  float: left;
+}
+#cssmenu.align-center > ul {
+  font-size: 0;
+  text-align: center;
+}
+#cssmenu.align-center > ul > li {
+  display: inline-block;
+  float: none;
+}
+#cssmenu.align-center ul ul {
+  text-align: left;
+}
+#cssmenu.align-right > ul > li {
+  float: right;
+}
+#cssmenu > ul > li > a {
+  padding: 17px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #dddddd;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+#cssmenu > ul > li:hover > a {
+  color: #ffffff;
+}
+#cssmenu > ul > li.has-sub > a {
+  padding-right: 30px;
+}
+#cssmenu > ul > li.has-sub > a:after {
+  position: absolute;
+    top: 23px;
+    right: 2px;
+    width: 8px;
+    height: 2px;
+    display: block;
+    background: #dddddd;
+    content: '';
+}
+#cssmenu > ul > li.has-sub > a:before {
+       position: absolute;
+    top: 20px;
+    right: 5px;
+    display: block;
+    width: 2px;
+    height: 8px;
+    background: #dddddd;
+    content: '';
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+}
+#cssmenu > ul > li.has-sub:hover > a:before {
+  top: 23px;
+  height: 0;
+}
+#cssmenu ul ul {
+  position: absolute;
+  left: -9999px;    border: 1px solid white;
+}
+#cssmenu.align-right ul ul {
+  text-align: right;
+}
+#cssmenu ul ul li {
+  height: 0;
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+#cssmenu li:hover > ul {
+  left: auto;
+}
+#cssmenu.align-right li:hover > ul {
+  left: auto;
+  right: 0;
+}
+#cssmenu li:hover > ul > li {
+  height: 35px;
+}
+#cssmenu ul ul ul {
+  margin-left: 100%;
+  top: 0;
+}
+#cssmenu.align-right ul ul ul {
+  margin-left: 0;
+  margin-right: 100%; padding:5px 0px;
+}
+#cssmenu ul ul li a {
+  border-bottom: 1px solid rgba(150, 150, 150, 0.15);
+  padding: 0px 15px;
+  width: 170px;
+  font-size: 12px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 400;
+  background: #333333; line-height:15px
+}
+#cssmenu ul ul li:last-child > a,
+#cssmenu ul ul li.last-item > a {
+  border-bottom: 0;
+}
+#cssmenu ul ul li:hover > a,
+#cssmenu ul ul li a:hover {
+  color: #ffffff;
+}
+#cssmenu ul ul li.has-sub > a:after {
+  position: absolute;
+  top: 16px;
+  right: 11px;
+  width: 8px;
+  height: 2px;
+  display: block;
+  background: #dddddd;
+  content: '';
+}
+#cssmenu.align-right ul ul li.has-sub > a:after {
+  right: auto;
+  left: 11px;
+}
+#cssmenu ul ul li.has-sub > a:before {
+  position: absolute;
+  top: 13px;
+  right: 14px;
+  display: block;
+  width: 2px;
+  height: 8px;
+  background: #dddddd;
+  content: '';
+  -webkit-transition: all .25s ease;
+  -moz-transition: all .25s ease;
+  -ms-transition: all .25s ease;
+  -o-transition: all .25s ease;
+  transition: all .25s ease;
+}
+#cssmenu.align-right ul ul li.has-sub > a:before {
+  right: auto;
+  left: 14px;
+}
+#cssmenu ul ul > li.has-sub:hover > a:before {
+  top: 17px;
+  height: 0;
+}
+@media all and (max-width: 768px), only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min--moz-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (-o-min-device-pixel-ratio: 2/1) and (max-width: 1024px), only screen and (min-device-pixel-ratio: 2) and (max-width: 1024px), only screen and (min-resolution: 192dpi) and (max-width: 1024px), only screen and (min-resolution: 2dppx) and (max-width: 1024px) {
+  #cssmenu {
+    width: 100%;
+  }
+  #cssmenu ul {
+    width: 100%;
+    display: none;
+  }
+  #cssmenu.align-center > ul {
+    text-align: left;
+  }
+  #cssmenu ul li {
+    width: 100%;
+    border-top: 1px solid rgba(120, 120, 120, 0.2);
+  }
+  #cssmenu ul ul li,
+  #cssmenu li:hover > ul > li {
+    height: auto;
+  }
+  #cssmenu ul li a,
+  #cssmenu ul ul li a {
+    width: 100%;
+    border-bottom: 0;
+  }
+  #cssmenu > ul > li {
+    float: none;
+  }
+  #cssmenu ul ul li a {
+    padding-left: 25px;
+  }
+  #cssmenu ul ul ul li a {
+    padding-left: 35px;
+  }
+  #cssmenu ul ul li a {
+    color: #dddddd;
+    background: none;
+  }
+  #cssmenu ul ul li:hover > a,
+  #cssmenu ul ul li.active > a {
+    color: #000;
+  }
+  #cssmenu ul ul,
+  #cssmenu ul ul ul,
+  #cssmenu.align-right ul ul {
+    position: relative;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    text-align: left;
+  }
+  #cssmenu > ul > li.has-sub > a:after,
+  #cssmenu > ul > li.has-sub > a:before,
+  #cssmenu ul ul > li.has-sub > a:after,
+  #cssmenu ul ul > li.has-sub > a:before {
+    display: none;
+  }
+  #cssmenu #menu-button {
+    display: block;
+    padding: 17px;
+    color: #000;
+    cursor: pointer;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700; background:#4ac8f1
+  }
+  #cssmenu #menu-button:after {
+    position: absolute;
+    top: 32px;
+    right: 17px;
+    display: block;
+    height: 8px;
+    width: 20px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    content: '';
+  }
+  #cssmenu #menu-button:before {
+    position: absolute;
+    top: 26px;
+    right: 17px;
+    display: block;
+    height: 2px;
+    width: 20px;
+    background: #000;
+    content: '';
+  }
+  #cssmenu #menu-button.menu-opened:after {
+    top: 29px;
+    border: 0;
+    height: 2px;
+    width: 15px;
+    background: #ffffff;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  #cssmenu #menu-button.menu-opened:before {
+    top: 29px;
+    background: #ffffff;
+    width: 15px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  #cssmenu .submenu-button {
+    position: absolute;
+    z-index: 99;
+    right: 0;
+    top: 0;
+    display: block;
+    border-left: 1px solid rgba(120, 120, 120, 0.2);
+    height: 46px;
+    width: 46px;
+    cursor: pointer;
+  }
+  #cssmenu .submenu-button.submenu-opened {
+    background: #262626;
+  }
+  #cssmenu ul ul .submenu-button {
+    height: 34px;
+    width: 34px;
+  }
+  #cssmenu .submenu-button:after {
+    position: absolute;
+    top: 22px;
+    right: 19px;
+    width: 8px;
+    height: 2px;
+    display: block;
+    background: #dddddd;
+    content: '';
+  }
+  #cssmenu ul ul .submenu-button:after {
+    top: 15px;
+    right: 13px;
+  }
+  #cssmenu .submenu-button.submenu-opened:after {
+    background: #ffffff;
+  }
+  #cssmenu .submenu-button:before {
+    position: absolute;
+    top: 19px;
+    right: 22px;
+    display: block;
+    width: 2px;
+    height: 8px;
+    background: #dddddd;
+    content: '';
+  }
+  #cssmenu ul ul .submenu-button:before {
+    top: 12px;
+    right: 16px;
+  }
+  #cssmenu .submenu-button.submenu-opened:before {
+    display: none;
+  }
+}
+
+ section:nth-child(1n) {
+    padding: 85px 0px 0px 42px;
+}
