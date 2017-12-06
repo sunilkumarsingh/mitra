@@ -24,6 +24,14 @@ from rest_framework import permissions
 class PowerMitraIndex(TemplateView):
     template_name = "client/index.html"
 
+# @login_required(login_url="login/")
+class PowerMitraAdmin(LoginRequiredMixin, TemplateView):
+    """
+        Home page for PM Admin portal
+    """
+    template_name = "backend/index.html"
+    login_url = '/login/'
+
 class UsersViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.

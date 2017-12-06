@@ -69,38 +69,28 @@ app.config(function( $stateProvider, $urlRouterProvider, RestangularProvider,
 	$urlRouterProvider.otherwise('/');
 
 	$stateProvider
-		.state('/', {
-			url : "/",
-			templateUrl : "/static/ng_templates/home.html",
-			// controller : "Dashboard"
-		})
-
-		.state('dashboard', {
-			url : "/dashboard",
-			templateUrl : "/static/ng_templates/dashboard.html",
-			// controller : "ManageProfile"
-		})
-
 		.state('admin', {
 			url : "/admin",
 			templateUrl : "/static/ng_templates/pm_admin.html",
-			// controller : "ManageProfile"
 		})
-
-		.state('aboutus', {
-			url : "/aboutus",
-			templateUrl : "/static/ng_templates/aboutus.html",
-			// controller : "ManageProfile"
+		.state('/', {
+			url : "/",
+			templateUrl : "/static/ng_templates/dashboard.html",
+			// controller : "Dashboard"
 		})
-		.state('services', {
-			url : "/services",
-			templateUrl : "/static/ng_templates/services.html",
-			// controller : "ManageProfile"
-		})		
-		.state('contactus', {
-			url : "/contactus",
-			templateUrl : "/static/ng_templates/contactus.html",
-			// controller : "ContactUs"
+		.state('manage_consumers', {
+			url : "/manage/consumers",
+			templateUrl : "/static/ng_templates/consumers.html",
+			// controller : "ManageConsumers"
 		})
-		
+		.state('manage_projects', {
+			url : "/manage/projects",
+			templateUrl : "/static/ng_templates/projects.html",
+			// controller : "ManageProject"
+		})
+		.state('manage_payment', {
+			url : "/manage/payment",
+			templateUrl : "/static/ng_templates/payment.html",
+			// controller : "ManagePayment"
+		})
 });

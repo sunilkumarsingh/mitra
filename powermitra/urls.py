@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from users import views
-# from users import urls
 from django.views.generic.base import TemplateView
 from django.contrib.auth import views as auth_views
 
