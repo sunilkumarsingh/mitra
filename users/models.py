@@ -58,7 +58,6 @@ class User(AbstractUser):
     IRR_value = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     financial_document_upload = models.FileField(upload_to=image_upload_path, blank=True, null=True)
     created_by = models.CharField(max_length=64, blank=True, null=True)
-    create_date = models.DateTimeField(blank=True, null=True)
     updated_by = models.CharField(max_length=64, blank=True, null=True)
     update_date = models.DateTimeField(blank=True, null=True)
 
@@ -126,7 +125,7 @@ class ProjectStatus(models.Model):
     updated_by =  models.CharField(max_length=64, blank=True, null=True)
 
     class Meta:
-        db_table = "ebc_project_status"
+        db_table = "pm_project_status"
         ordering = ['-pk']
 
     def __unicode__(self):
@@ -138,7 +137,7 @@ class Project_Details(models.Model):
     investor = models.ForeignKey('User',on_delete=models.DO_NOTHING, related_name='project_investor')
     epc = models.ForeignKey('User',on_delete=models.DO_NOTHING, related_name='project_epc')
     epc_Details = models.CharField(max_length=200, blank=True, null=True)
-    payment_details = models.CharField(max_length=64, blank=True, null=True)
+    # payment_details = models.CharField(max_length=64, blank=True, null=True)
     units_generated = models.PositiveIntegerField(blank=True, null=True)
     amount_due = models.DecimalField(max_digits=11, decimal_places=2, blank=True, null=True)
     next_payment_date = models.DateTimeField(blank=True, null=True)
@@ -159,9 +158,24 @@ class Project_Details(models.Model):
 
 
     class Meta:
-        db_table = "ebc_project_details"
+        db_table = "pm_project_details"
         ordering = ['-pk']
 
+
+class Payment_Details(models.Model):
+    user = models.ForeignKey('User',on_delete=models.DO_NOTHING)
+    project = models.ForeignKey('Project_Details',on_delete=models.DO_NOTHING)
+    payment_details = models.CharField(max_length=64, blank=True, null=True)
+    cheque_details = models.CharField(max_length=64, blank=True, null=True)
+    upload_image = models.FileField(upload_to=image_upload_path, blank=True, null=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    created_by = models.CharField(max_length=64, blank=True, null=True)
+    updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
+    updated_by =  models.CharField(max_length=64, blank=True, null=True)
+
+    class Meta:
+        db_table = "pm_payment_details"
+        ordering = ['-pk']
 
 class Basic_Assumptions(models.Model):
     discounting_factor = models.PositiveIntegerField(blank=True, null=True)
@@ -175,5 +189,5 @@ class Basic_Assumptions(models.Model):
     decrease_in_plant_output_everyyear_after_1styear = models.PositiveIntegerField(blank=True, null=True)
 
     class Meta:
-        db_table = "ebc_basic_assumptions"
+        db_table = "pm_basic_assumptions"
         ordering = ['-pk']

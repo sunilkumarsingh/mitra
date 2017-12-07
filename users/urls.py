@@ -28,13 +28,14 @@ urlpatterns = [
     url(r'^user/password/done/$', auth_views.password_reset_complete, {'template_name': 'registration/password_reset_complete.html'}, name='password_reset_complete'),
 
     
-    url(r'^users/list/$', views.UsersList.as_view()), 
-    url(r'^epc/list/', views.EPCList.as_view()),
     url(r'^users/list/$', views.UsersList.as_view()),
+    url(r'^consumer/list/', views.ConsumerList.as_view()),
+    url(r'^epc/list/', views.EPCList.as_view()),
     url(r'^usertype/$',views.UserTypeList.as_view()),
     url(r'^investor/list/', views.InvestorList.as_view()),
-    url(r'^project/list/(?P<id>[0-9]+)/$', views.ProjectList.as_view()),
-    url(r'^inactiveuser/(?P<id>[0-9]+)/$', views.UpdateUserStatus.as_view(), name='inactive-user'),
+    url(r'^consumer/project/list/(?P<id>[0-9]+)/$', views.ConsumerProjectList.as_view(), name='consumer_projects'),
+    url(r'^project/details/(?P<id>[0-9]+)/$', views.ProjectDetails.as_view()),
+    url(r'^inactiveuser/(?P<id>[0-9]+)/$', views.UpdateUserStatus.as_view(), name='inactive_user'),
     url(r'^password/reset/$', views.UserPasswordReset.as_view(), name="password_reset"),
     url(r'^password/modify/$', views.ModifyUserPassword.as_view(), name="password_modify"),
     url(r'^users/register/$', views.RegisterUserView.as_view()),

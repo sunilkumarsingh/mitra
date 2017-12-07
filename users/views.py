@@ -73,6 +73,18 @@ class UsersList(generics.ListCreateAPIView):
     queryset = User.objects.filter(is_active=1)
 
 
+class ConsumerList(generics.ListCreateAPIView):
+    """List of consumer users """
+
+
+    model = User
+    serializer_class = UserSerializer
+
+    def get(self, request, *args, **kwargs):
+        consumer_data = User.objects.filter(user_type__name="consumer", is_active=1).values()
+        return HttpResponse(consumer_data, content_type="text/plain")
+
+
 class EPCList(generics.ListCreateAPIView):
     """List of EPC users """
 
@@ -103,7 +115,7 @@ class UserTypeList(generics.ListCreateAPIView):
         return HttpResponse(usertype_list, content_type="text/plain")
 
 
-class ProjectList(generics.ListCreateAPIView):
+class ConsumerProjectList(generics.ListCreateAPIView):
     """ List of Projects of particular consumer"""
 
     model = Project_Details
@@ -113,6 +125,17 @@ class ProjectList(generics.ListCreateAPIView):
         user_id = self.kwargs['id']
         project_data = Project_Details.objects.filter(consumer=user_id).values()
         return HttpResponse(project_data, content_type="text/plain")
+
+class ProjectDetails(generics.ListCreateAPIView):
+    """ View Project details """
+
+    model = Project_Details
+    serializer_class = ProjectSerializer
+
+    def get(self, request, *args, **kwargs):
+        project_id = self.kwargs['id']
+        project_details= Project_Details.objects.filter(id=project_id).values()
+        return HttpResponse(project_details, content_type="text/plain")
 
 
 class UpdateUserStatus(generics.RetrieveUpdateAPIView):
@@ -208,5 +231,8 @@ class ConsumerWithEPCReview(generics.CreateAPIView):
             return JsonResponse({"message": 'Updated Review'})
         except Exception as e:
             return HttpResponse(e, status=500)
+
+
+
 
 
