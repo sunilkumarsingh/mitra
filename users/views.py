@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse,JsonResponse, HttpResponseBadRequest
 
 from django.contrib.auth.models import User
 from rest_framework import viewsets, generics
@@ -210,3 +210,59 @@ class ConsumerWithEPCReview(generics.CreateAPIView):
             return HttpResponse(e, status=500)
 
 
+def ajax_login(request):
+    print(request.method)
+    print(request.POST)
+    if request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        print("U: %r / P: %r" % (username, password))
+        if username and password:
+            # Test username/password combination
+            user = authenticate(username=username, password=password)
+            # Found a match
+            if user is not None:
+                # User is active
+                if user.is_active:
+                    # Officially log the user in
+                    login(self.request, user)
+                    data = {'success': True}
+                else:
+                    data = {'success': False, 'error': 'User is not active'}
+            else:
+                data = {'success': False, 'error': 'Wrong username and/or password'}
+
+            return HttpResponse(json.dumps(data), content_type='application/json')
+
+    # Request method is not POST or one of username or password is missing
+    return HttpResponseBadRequest()
+
+from django.contrib.auth import login
+class UserLogin(generics.ListCreateAPIView):
+    """
+    Users Login api
+    """
+    def post(self, request, *args, **kwargs):
+        email = request.data['email']
+        password = request.data['password']
+        user = authenticate(email=email, password=password)
+        if user is not None:
+            # the password verified for the user
+            if user.is_active:
+                # Officially log the user in
+                login(request, user)
+                serialized = UserSerializer(user)
+                # return redirect('/')
+                return Response({
+                    "status": "success",
+                    "data":serialized.data})
+            else:
+                return Response({
+                    'status': "failed",
+                    'message': "Your account is not active, Please contact to administrator."
+                    }, status=HTTP_401_UNAUTHORIZED)
+        else:
+            return Response({
+                'status': "failed",
+                'message': "Pease enter a correct username and password."
+                }, status=HTTP_401_UNAUTHORIZED)
