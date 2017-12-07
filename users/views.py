@@ -255,8 +255,8 @@ class CreateUser(generics.ListCreateAPIView):
         request_data['password'] = make_password(request.data['password'])
         request_data['is_superuser'] = 0
         request_data['username'] = request.data['email']
-        request_data["first_name"] = request.data.get('first_name', "")
-        request_data["last_name"] = request.data.get('last_name', "")
+        request_data['first_name'] = request.data.get('first_name', "")
+        request_data['last_name'] = request.data.get('last_name', "")
         request_data['email'] = request.data['email']
         request_data['is_staff'] = 0
         request_data['is_active'] = 1
