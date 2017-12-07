@@ -1,4 +1,24 @@
 <h2>Show consumer lists !</h2>
+<div class="">
+	<table>
+		<head>
+			<th>Sr</th>
+			<th>Email</th>
+			<th>User Type</th>
+			<th>Mobile</th>
+			<th>Joining Date</th>
+		</head>
+		<body>
+			<tr ng-repeat="consumer in consumers">
+				<td>{{$index+1}}</td>
+				<td>{{consumer.email}}</td>
+				<td>{{consumer.user_type}}</td>
+				<td>{{consumer.mobile}}</td>
+				<td>{{consumer.date_joined}}</td>
+			</tr>
+		</body>
+	</table>
+</div>
 <script type="text/javascript">
 $(document).ready(function(){
 	console.log("Load the user consumer!");
