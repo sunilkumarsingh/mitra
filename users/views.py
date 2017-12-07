@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
 from django.shortcuts import render
 from django.http import HttpResponse,JsonResponse, HttpResponseBadRequest
-
 from django.contrib.auth.models import User
 from rest_framework import viewsets, generics
-from rest_framework.response import Response
-from users.serializers import UserSerializer, UserTypeSerializer, EPC_DetailsSerializer, ProjectSerializer, ResetPasswordSerializer, UserRegisterSerializer,ModifyUserPasswordSerializer
+from users.serializers import UserSerializer, UserTypeSerializer, EPC_DetailsSerializer, ProjectSerializer, ResetPasswordSerializer, \
+    ConsumerRegisterSerializer,ModifyUserPasswordSerializer,CreateUserSerializer
 
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -20,6 +18,8 @@ from rest_framework.status import HTTP_401_UNAUTHORIZED
 from rest_framework.authtoken.models import Token
 from django.contrib.auth import get_user_model
 from rest_framework import permissions
+from django.contrib.auth.hashers import make_password
+import datetime
 
 class PowerMitraIndex(TemplateView):
     template_name = "client/index.html"
@@ -73,6 +73,18 @@ class UsersList(generics.ListCreateAPIView):
     queryset = User.objects.filter(is_active=1)
 
 
+class ConsumerList(generics.ListCreateAPIView):
+    """List of consumer users """
+
+
+    model = User
+    serializer_class = UserSerializer
+
+    def get(self, request, *args, **kwargs):
+        consumer_data = User.objects.filter(user_type__name="consumer", is_active=1).values()
+        return HttpResponse(consumer_data, content_type="text/plain")
+
+
 class EPCList(generics.ListCreateAPIView):
     """List of EPC users """
 
@@ -103,7 +115,7 @@ class UserTypeList(generics.ListCreateAPIView):
         return HttpResponse(usertype_list, content_type="text/plain")
 
 
-class ProjectList(generics.ListCreateAPIView):
+class ConsumerProjectList(generics.ListCreateAPIView):
     """ List of Projects of particular consumer"""
 
     model = Project_Details
@@ -113,6 +125,17 @@ class ProjectList(generics.ListCreateAPIView):
         user_id = self.kwargs['id']
         project_data = Project_Details.objects.filter(consumer=user_id).values()
         return HttpResponse(project_data, content_type="text/plain")
+
+class ProjectDetails(generics.ListCreateAPIView):
+    """ View Project details """
+
+    model = Project_Details
+    serializer_class = ProjectSerializer
+
+    def get(self, request, *args, **kwargs):
+        project_id = self.kwargs['id']
+        project_details= Project_Details.objects.filter(id=project_id).values()
+        return HttpResponse(project_details, content_type="text/plain")
 
 
 class UpdateUserStatus(generics.RetrieveUpdateAPIView):
@@ -173,7 +196,7 @@ class RegisterUserView(CreateAPIView):
     permission_classes = [
         permissions.AllowAny
     ]
-    serializer_class = UserRegisterSerializer
+    serializer_class = ConsumerRegisterSerializer
 
 
 class ConsumerEPCList(generics.CreateAPIView):
@@ -208,6 +231,7 @@ class ConsumerWithEPCReview(generics.CreateAPIView):
             return JsonResponse({"message": 'Updated Review'})
         except Exception as e:
             return HttpResponse(e, status=500)
+
 
 
 def ajax_login(request):
@@ -266,3 +290,40 @@ class UserLogin(generics.ListCreateAPIView):
                 'status': "failed",
                 'message': "Pease enter a correct username and password."
                 }, status=HTTP_401_UNAUTHORIZED)
+
+class ProjectPaymentDetails(generics.ListCreateAPIView):
+    """
+    View Project payment details
+    """
+    def get(self,request, *args, **kwargs):
+        project_id = self.kwargs["id"]
+        payment_details= Payment_Details.objects.filter(project=project_id).values()
+        return HttpResponse(payment_details)
+
+
+class CreateUser(generics.ListCreateAPIView):
+    """
+    Create user 'EPC or  Investor or IPP' by admin
+    """
+    model = User
+    queryset = User.objects.all()
+    serializer_class = CreateUserSerializer
+
+    def create(self, request, *args, **kwargs):
+        request_data = request.POST.copy()
+        request_data['password'] = make_password(request.data['password'])
+        request_data['is_superuser'] = 0
+        request_data['username'] = request.data['email']
+        request_data['first_name'] = request.data.get('first_name', "")
+        request_data['last_name'] = request.data.get('last_name', "")
+        request_data['email'] = request.data['email']
+        request_data['is_staff'] = 0
+        request_data['is_active'] = 1
+        request_data['date_joined'] = datetime.datetime.utcnow()
+        request_data['user_type'] = request.data['user_type']
+        serializer = self.get_serializer(data=request_data)
+        if serializer.is_valid(raise_exception=True):
+            auth_user = serializer.save()
+            return Response(auth_user.id)
+        else:
+            return HttpResponse(serializer.errors, status=400)
