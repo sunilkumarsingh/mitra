@@ -40,7 +40,9 @@ urlpatterns = [
     url(r'^users/register/$', views.RegisterUserView.as_view()),
     url(r'^consumerepc/list/(?P<id>[0-9]+)/$', views.ConsumerEPCList.as_view()),
     url(r'^epcreview/(?P<id>[0-9]+)/$', views.ConsumerWithEPCReview.as_view()),
-    url(r'^project/payment/(?P<id>[0-9]+)/$', views.ProjectPaymentDetails.as_view(), name='project_payment'),
+    url(r'^project/payment/details/(?P<id>[0-9]+)/$', views.ProjectPaymentDetails.as_view(), name='project_payment_details'),
+    url(r'^createuser/$', views.CreateUser.as_view()),
+
 ]
 
 

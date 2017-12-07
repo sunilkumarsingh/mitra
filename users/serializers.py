@@ -15,7 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
                   "plant_size_per_consumption","feasible_in_house_plant","consumer_profile","income","cibil_report","review")
 
 
-class UserRegisterSerializer(serializers.ModelSerializer):
+class ConsumerRegisterSerializer(serializers.ModelSerializer):
         password = serializers.CharField(write_only=True)
 
         def create(self, validated_data):
@@ -145,3 +145,10 @@ class ModifyUserPasswordSerializer(serializers.Serializer):
             return instance
 
         return User(**attrs)
+
+class CreateUserSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = User
+            fields = ("is_superuser", "username", "first_name", "last_name", "email", "is_active", "date_joined", "is_staff",
+                      "password", "user_type")
+            # fields = ("email", "password", "mobile", "user_type")
