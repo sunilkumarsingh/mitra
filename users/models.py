@@ -168,7 +168,7 @@ class Payment_Details(models.Model):
     payment_details = models.CharField(max_length=64, blank=True, null=True)
     cheque_details = models.CharField(max_length=64, blank=True, null=True)
     upload_image = models.FileField(upload_to=image_upload_path, blank=True, null=True)
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateTimeField(auto_now_add=True,blank=True, null=True)
     created_by = models.CharField(max_length=64, blank=True, null=True)
     updated_date = models.DateTimeField(auto_now=True, blank=True, null=True)
     updated_by =  models.CharField(max_length=64, blank=True, null=True)

@@ -233,6 +233,13 @@ class ConsumerWithEPCReview(generics.CreateAPIView):
             return HttpResponse(e, status=500)
 
 
-
+class ProjectPaymentDetails(generics.CreateAPIView):
+    """
+    View Project payment details
+    """
+    def get(self,request, *args, **kwargs):
+        project_id = self.kwargs["id"]
+        payment_details= Payment_Details.objects.filter(project=project_id).values()
+        return HttpResponse(payment_details)
 
 
