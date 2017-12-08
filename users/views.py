@@ -4,7 +4,7 @@ from django.http import HttpResponse,JsonResponse
 from django.contrib.auth.models import User
 from rest_framework import viewsets, generics
 from users.serializers import UserSerializer, UserTypeSerializer, EPC_DetailsSerializer, ProjectSerializer, ResetPasswordSerializer, \
-    ConsumerRegisterSerializer,ModifyUserPasswordSerializer,CreateUserSerializer
+    ConsumerRegisterSerializer, ModifyUserPasswordSerializer, CreateUserSerializer, AddPaymentDetailsSerializer
 
 from django.views.generic.base import TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -268,3 +268,37 @@ class CreateUser(generics.ListCreateAPIView):
             return Response(auth_user.id)
         else:
             return HttpResponse(serializer.errors, status=400)
+
+
+class AddPaymentDetails(generics.ListCreateAPIView):
+    """
+    Add payment detials of project
+    """
+    model = Payment_Details
+    queryset = Payment_Details.objects.all()
+    serializer_class = AddPaymentDetailsSerializer
+
+# from django.views.decorators.csrf import csrf_exempt
+# @csrf_exempt
+# def RuleWhitelist(request):
+#
+#         if request.method == "POST":
+#             print ">>>>>>>>"
+#             # handle_uploaded_file(request.FILES['file'], '/var/www/raxakprotect/static/rulewhitelist')
+#             try:
+#                 print "try",request.FILES.getlist('file')
+#                 for f in request.FILES.getlist('file'):
+#                     handle_uploaded_file(f, '/home/raxak/powerimg')
+#
+#             except Exception as e:
+#                 print e
+#                 return JsonResponse({'status': "Error"})
+#
+#         return JsonResponse({'status': "Done"})
+#
+#
+# def handle_uploaded_file(f, destination):
+#     print "------",destination
+#     with open(destination, 'wb+') as destination:
+#         for chunk in f.chunks():
+#             destination.write(chunk)

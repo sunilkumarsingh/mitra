@@ -42,6 +42,8 @@ urlpatterns = [
     url(r'^epcreview/(?P<id>[0-9]+)/$', views.ConsumerWithEPCReview.as_view()),
     url(r'^project/payment/details/(?P<id>[0-9]+)/$', views.ProjectPaymentDetails.as_view(), name='project_payment_details'),
     url(r'^createuser/$', views.CreateUser.as_view()),
+    url(r'^addpayment/$', views.AddPaymentDetails.as_view()),
+    # url(r'^rule/param/$', views.RuleWhitelist, name="rule-whitelist"),
 
 ]
 

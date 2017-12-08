@@ -151,4 +151,9 @@ class CreateUserSerializer(serializers.ModelSerializer):
             model = User
             fields = ("is_superuser", "username", "first_name", "last_name", "email", "is_active", "date_joined", "is_staff",
                       "password", "user_type")
-            # fields = ("email", "password", "mobile", "user_type")
+
+
+class AddPaymentDetailsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Payment_Details
+        fields = ('__all__')
