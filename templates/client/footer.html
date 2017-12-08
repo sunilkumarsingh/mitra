@@ -90,10 +90,15 @@
                 <h4>Error!</h4>
               Your Error Message goes here </div>
               <!-- End Error box -->
-              <form action="#" method="get"  >
-                <input type="text" placeholder="User name" class="input-field" required/>
-                <input type="password"  placeholder="Password" class="input-field" required/>
-                <button type="submit" class="btn btn-login">Login</button>
+               <form class="login-form" method="post" action="{% url 'login' %}" id="login_form">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="User Name" required="" id="id_username" maxlength="254">
+                <input type="password" name="password" placeholder="Password" required="" id="id_password">
+
+                <!-- <input type="text" placeholder="User name" class="input-field" required/> -->
+                <!-- <input type="password"  placeholder="Password" class="input-field" required/> -->
+                <input type="hidden" id="request_path" name="next" value="/"/>
+                <button type="submit" name="action" class="btn btn-login">Login</button>
               </form>
               <div class="login-links"> <a  data-toggle="modal" data-target="#ForgotModal"> Forgot password? </a> <br />
               <a  data-toggle="modal" data-target="#RegisterModal"> Don't have an account? <strong>Sign Up</strong> </a> </div>

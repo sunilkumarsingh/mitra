@@ -24,4 +24,24 @@
 {% block js %}
 	<script src="{% static 'js/mitra_app.js' %}"></script>
 	<script src="{% static 'js/consumer.js' %}"></script>
+	<script type="text/javascript">
+	$('form').on('submit', function(e) {
+	e.preventDefault()
+    $.ajax({
+      type:"POST",
+      url: '/ajax_login/',
+	    headers: {
+	        // 'Authorization':'',
+	        'X-CSRFToken': csrftoken,
+	        // 'Content-Type':'application/json'
+	    },      
+      // data: $('#login_form').serialize(),
+      data: {'email':$('#id_username').val(),'password':$('#id_password').val()},
+      success: function(response){
+        if(response.status==="success")
+        	location.reload();
+   }
+  });
+});
+</script>
 {% endblock js %}

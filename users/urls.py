@@ -17,6 +17,7 @@ urlpatterns = [
     
     url(r'^admin/$', views.PowerMitraAdmin.as_view(), name='admin'),
     url(r'^login/$', auth_views.login, name='login'),
+    url(r'^ajax_login/$', views.UserLogin.as_view()),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^user/password/reset/$', auth_views.password_reset,
         {'template_name': 'registration/password_reset_form.html',
@@ -26,7 +27,6 @@ urlpatterns = [
     url(r'^user/password/reset/done/$', auth_views.password_reset_done, {'template_name': 'registration/password_reset_done.html'}, name='password_reset_done'),
     url(r'^user/password/reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$', auth_views.password_reset_confirm, {'template_name': 'registration/password_reset_confirm.html'}, name='password_reset_confirm'),
     url(r'^user/password/done/$', auth_views.password_reset_complete, {'template_name': 'registration/password_reset_complete.html'}, name='password_reset_complete'),
-
     url(r'^users/list/$', views.UsersList.as_view()),
     url(r'^consumer/list/', views.ConsumerList.as_view()),
     url(r'^epc/list/', views.EPCList.as_view()),

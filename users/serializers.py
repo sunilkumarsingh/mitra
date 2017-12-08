@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = ("email","id", "user_type","mobile","is_active","comments","rooftop_area","consumption","total_bill_with_taxes",
                   "total_unit_consumption","total_per_unit_cost","willing_price_per_unit","price_escalation_per_year","plant_size_per_RT_area",
-                  "plant_size_per_consumption","feasible_in_house_plant","consumer_profile","income","cibil_report","review")
+                  "plant_size_per_consumption","feasible_in_house_plant","consumer_profile","income","cibil_report","review","date_joined")
 
 
 class ConsumerRegisterSerializer(serializers.ModelSerializer):

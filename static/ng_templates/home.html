@@ -1,5 +1,5 @@
 <section id="intro" class="parallax" data-start="background-position: 50% -10px;" data-100p="background-position: 50% 60px;">
-  <div class="section-overlay">
+  <div class="section-overlay" ng-controller="Consumers">
     <div class="float-content">
       <div class="container">
         <div class="row">
@@ -9,7 +9,10 @@
                 <div class="active item">
                   <div> <span class="smoke">Save </span> <span class="text-uppercase light">Money</span> </div>
                   <div> <span class="smoke">Save </span> <span class="text-uppercase light">Environment</span> </div>
-                  <a  class="btn" data-toggle="modal" data-target="#loginModal">Get started</a> </div>
+                  >>>>>>>>>>> {{consumers}}
+                  {% if user.id %}
+                    <a  class="btn" data-toggle="modal" data-target="#loginModal">Get started</a> </div>
+                  {% endif %}
                   <!--<div class="item">
                     <h5 class="smoke">Versatile design for</h5>
                     <h1 class="text-uppercase light">Personal portfolio and agency</h1>
