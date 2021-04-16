@@ -3,7 +3,7 @@ chardet==3.0.4
 Django==1.11.4
 django-allauth==0.32.0
 django-angular==0.8.3
-django-debug-toolbar==1.6
+django-debug-toolbar==1.11.1
 django-debug-toolbar-request-history==0.0.3
 django-debug-toolbar-template-profiler==1.0.1
 django-debug-toolbar-template-timings==0.7
